@@ -1,8 +1,8 @@
-defmodule Rumbl.User do
+defmodule Rumbl.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "users" do
+  schema "accounts_users" do
     field :name, :string
     field :username, :string
     field :password, :string, virtual: true

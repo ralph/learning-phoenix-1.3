@@ -3,11 +3,11 @@ defmodule Rumbl.MemoryRepo do
   In memory repository.
   """
 
-  def all(Rumbl.User) do
+  def all(Rumbl.Accounts.User) do
     [
-      %Rumbl.User{id: "1", name: "José", username: "josevalim", password: "elixir"},
-      %Rumbl.User{id: "2", name: "Bruce", username: "redrapids", password: "7langs"},
-      %Rumbl.User{id: "3", name: "Chris", username: "chrismccord", password: "phx"}
+      %Rumbl.Accounts.User{id: "1", name: "José", username: "josevalim", password: "elixir"},
+      %Rumbl.Accounts.User{id: "2", name: "Bruce", username: "redrapids", password: "7langs"},
+      %Rumbl.Accounts.User{id: "3", name: "Chris", username: "chrismccord", password: "phx"}
     ]
   end
   def all(_module), do: []

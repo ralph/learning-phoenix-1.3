@@ -6,6 +6,7 @@ defmodule Rumbl.VideoContext.Video do
     field :title, :string
     field :description, :string
     belongs_to :user, Rumbl.Accounts.User
+    belongs_to :category, Rumbl.VideoContext.Category
 
     timestamps()
   end

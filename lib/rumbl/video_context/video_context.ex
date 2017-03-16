@@ -18,7 +18,10 @@ defmodule Rumbl.VideoContext do
 
   """
   def list_videos(user) do
-    Repo.all(Ecto.assoc(user, :videos))
+    user
+    |> Ecto.assoc(:videos)
+    |> Repo.all
+    |> Repo.preload(:category)
   end
 
   @doc """
@@ -36,7 +39,10 @@ defmodule Rumbl.VideoContext do
 
   """
   def get_video!(id, user) do
-    Repo.get!(Ecto.assoc(user, :videos), id)
+    user
+    |> Ecto.assoc(:videos)
+    |> Repo.get(id)
+    |> Repo.preload(:category)
   end
 
   @doc """
@@ -107,7 +113,8 @@ defmodule Rumbl.VideoContext do
 
   defp video_changeset(%Video{} = video, attrs) do
     video
-    |> cast(attrs, [:url, :title, :description])
-    |> validate_required([:url, :title, :description])
+    |> cast(attrs, [:url, :title, :description, :category_id])
+    |> validate_required([:url, :title, :description, :category_id])
+    |> foreign_key_constraint(:category_id)
   end
 end
